@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate QR Code</h1>
+        <label for="url-input">Enter the Index Number:</label>
+        <input type="text" id="url-input" />
+        <br />
+        <label for="student-input">Student Name:</label>
+        <input type="text" id="student-input" />
+        <br />
+        <label for="name-input">School Name:</label>
+        <input type="text" id="name-input" />
+        <br />
+        <label for="email-input">Grade:</label>
+        <input type="text" id="email-input" />
+        <br />
+        <label for="address-input">CTB Depot:</label>
+        <input type="text" id="address-input" />
+        <br />
+        <label for="phone-input">Season Code:</label>
+        <input type="text" id="phone-input" />
+        <br />
+        <button onclick="generateQRCode()">Get the QR Code</button>
+    </div>
+
+    <script>
+        function generateQRCode() {
+            var url = document.getElementById('url-input').value;
+            var student = document.getElementById('student-input').value;
+            var name = document.getElementById('name-input').value;
+            var email = document.getElementById('email-input').value;
+            var address = document.getElementById('address-input').value;
+            var phone = document.getElementById('phone-input').value;
+
+            if (!url) {
+                alert("Please enter the Index Number!");
+                return;
+            }
+
+            // Encode the data to pass as URL parameters
+            var encodedUrl = encodeURIComponent(url);
+            var encodedStudent = encodeURIComponent(student);
+            var encodedName = encodeURIComponent(name);
+            var encodedEmail = encodeURIComponent(email);
+            var encodedAddress = encodeURIComponent(address);
+            var encodedPhone = encodeURIComponent(phone);
+
+            // Redirect to qrpage.html with the data as URL parameters
+            window.location.href = `qrpage.html?url=${encodedUrl}&name=${encodedName}&email=${encodedEmail}&address=${encodedAddress}&phone=${encodedPhone}&student=${encodedStudent}`;
+        }
+    </script>
+</body>
+</html>
